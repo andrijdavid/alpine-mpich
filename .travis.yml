@@ -15,7 +15,7 @@ script:
   - sh check_scripts.sh
   - docker build --build-arg MPICH_VERSION="3.2" -t $DOCKER_BASE_IMAGE:3.2 base/
   - docker build --build-arg MPICH_VERSION="3.3" -t $DOCKER_BASE_IMAGE:3.3 base/
-  - docker build --build-arg MPICH_VERSION="3.4a2" MPICH_CONFIGURE_OPTIONS="" -t $DOCKER_BASE_IMAGE:3.4a2 base/
+  - docker build --build-arg MPICH_VERSION="3.4a2" --build-arg MPICH_CONFIGURE_OPTIONS="" -t $DOCKER_BASE_IMAGE:3.4a2 base/
   - docker build --build-arg MPICH_VERSION="3.3" -t $DOCKER_BASE_IMAGE:latest base/
   - docker build --build-arg TAG="latest" -t $DOCKER_ONBUILD_IMAGE:onbuild onbuild/
   - docker build --build-arg TAG="3.2" -t $DOCKER_ONBUILD_IMAGE:onbuild-3.2 onbuild/
