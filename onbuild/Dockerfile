@@ -1,4 +1,5 @@
-FROM andrijdavid/alpine-mpich:latest
+ARG TAG=latest
+FROM andrijdavid/alpine-mpich:$TAG
 
 USER root
 
