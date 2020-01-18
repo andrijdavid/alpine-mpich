@@ -4,7 +4,7 @@ FROM alpine:3
 
 MAINTAINER Nikyle Nguyen <NLKNguyen@MSN.com>
 
-ARG REQUIRE="sudo build-base"
+ARG REQUIRE="sudo build-base opencl-headers"
 RUN apk update && apk upgrade \
       && apk add --no-cache ${REQUIRE}
 
