@@ -8,12 +8,14 @@ services:
 before_install:
   - shopt -s expand_aliases  # allow alias
   - shopt -s globstar  # allow use of **
-  - export DOCKER_BASE_IMAGE=andrijdavid/alpine-mpich:latest
+  - export DOCKER_BASE_IMAGE=andrijdavid/alpine-mpich
   - export DOCKER_ONBUILD_IMAGE=andrijdavid/alpine-mpich:onbuild
 
 script:
   - sh check_scripts.sh
-  - docker build -t $DOCKER_BASE_IMAGE base/
+  - docker build --build-arg MPICH_VERSION="3.2" -t $DOCKER_BASE_IMAGE:latest base/
+  - docker build --build-arg MPICH_VERSION="3.3" -t $DOCKER_BASE_IMAGE:3.3 base/
+  - docker build --build-arg MPICH_VERSION="3.4a2" -t $DOCKER_BASE_IMAGE:3.4a2 base/
   - docker build -t $DOCKER_ONBUILD_IMAGE onbuild/
 
 after_success:
